@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASL Recognition</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>American Sign Language Recognition</h1>
+            <p>Explore and learn ASL signs with our interactive recognition tool.</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="info-section">
+            <p>The American Sign Language (ASL) is the primary language used by deaf individuals in North America. It is a visual language that uses a combination of hand gestures, facial expressions, and body movements to convey meaning.</p>
+        </div>
+
+        <!-- Upload Image Form -->
+        <form id="upload-form" action="/predict" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" id="file-input" accept="image/*" capture="camera" onchange="previewImage(this)">
+            <label for="file-input" id="upload-label">Choose Image</label>
+            <!--<input type="submit" value="Predict" id="upload-button">-->
+        </form>
+
+        <!-- Display Image -->
+        <div id="image-preview"></div>
+
+        <!-- Predict Button -->
+        <button id="predict-button" onclick="predict(event)">Predict</button>
+        
+        <!-- Display Prediction Result -->
+        <p id="result"></p>
+    </div>
+
+    <script src="{{url_for('static',filename='script.js')}}"></script>
+    <input type="file" name="file" id="file-input" accept="image/*" capture="camera" onchange="previewImage(this, 300)">
+</body>
+</html>
